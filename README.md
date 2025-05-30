@@ -42,8 +42,11 @@ docker compose up --build
 
 ---
 
-## 📚 Endpoints
+## Swagger OpeApi Specification Endpoint
 
+- http://localhost:8080/swagger-ui/index.html
+
+## 📚 Endpoints
 
 ### 🔐 Authentication
 
