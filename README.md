@@ -25,8 +25,8 @@ docker -v
 ## Build and run application
 
 ```bash
-git clone https://github.com/your-org/your-repo.git
-cd your-repo
+git clone https://github.com/myspace20/task_manager.git
+cd task_manager
 
 ```
 
@@ -39,8 +39,6 @@ cd your-repo
 docker compose up --build
 
 ```
-
-
 
 ---
 
