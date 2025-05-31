@@ -4,6 +4,7 @@ package com.task.task_manager_rest.service;
 import com.task.task_manager_rest.dto.CreateUserDto;
 import com.task.task_manager_rest.dto.UserResponseDto;
 import com.task.task_manager_rest.entity.User;
+import com.task.task_manager_rest.exceptions.NotFoundException;
 import com.task.task_manager_rest.infrastructure.database.repositories.postgres.UserRepository;
 import com.task.task_manager_rest.mappers.UserMapper;
 import org.springframework.stereotype.Service;
@@ -27,14 +28,13 @@ public class UserService implements IUserService {
     }
 
     public UserResponseDto getUserById(Long id){
-        User user = userRepository.findById(id).orElse(null);
-        assert user != null;
+        User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
         return UserMapper.toDto(user);
     }
 
     public Optional<User> findByUsername(String username) throws Exception {
         return Optional.ofNullable(userRepository.findByUsername(username)
-                .orElseThrow(() -> new Exception("User not found: " + username)));
+                .orElseThrow(() -> new NotFoundException("User not found: " + username)));
     }
 
     public List<User> findAll(){
