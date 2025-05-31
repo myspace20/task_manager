@@ -4,7 +4,6 @@ import com.task.task_manager_rest.dto.CreateUserDto;
 import com.task.task_manager_rest.dto.LoginRequestDto;
 import com.task.task_manager_rest.dto.LoginResponseDto;
 import com.task.task_manager_rest.dto.UserResponseDto;
-import com.task.task_manager_rest.service.AuthService;
 import com.task.task_manager_rest.service.IAuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
