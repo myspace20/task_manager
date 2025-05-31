@@ -4,6 +4,8 @@ import com.task.task_manager_rest.dto.CreateTaskDto;
 import com.task.task_manager_rest.dto.TaskResponseDto;
 import com.task.task_manager_rest.dto.TaskUpdateDto;
 import com.task.task_manager_rest.service.ITaskService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,17 +27,19 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskResponseDto createTask(@RequestBody CreateTaskDto task) {
-        System.out.println(task.toString());
-        return taskService.createTask(task);
+    public ResponseEntity<TaskResponseDto>  createTask(@RequestBody CreateTaskDto task) {
+        TaskResponseDto createdTask = taskService.createTask(task);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdTask);
     }
 
     @PutMapping("/{id}")
-    public TaskResponseDto  updateTask(@PathVariable Long id, @RequestBody TaskUpdateDto task){
-        return taskService.update(id, task);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateTask(@PathVariable Long id, @RequestBody TaskUpdateDto task){
+        taskService.update(id, task);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(@PathVariable Long id){
         taskService.delete(id);
     }
