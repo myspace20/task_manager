@@ -15,7 +15,7 @@ import java.util.Collections;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private final UserRepository userRepository; // Your DAO / repository
+    private final UserRepository userRepository;
 
     public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
